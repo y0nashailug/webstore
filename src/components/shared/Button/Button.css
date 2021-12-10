@@ -1,0 +1,15 @@
+.button {
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    white-space: nowrap;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    padding: 0 3rem;
+}
+
+.pl-2 {
+    padding-left: 2rem;
+}

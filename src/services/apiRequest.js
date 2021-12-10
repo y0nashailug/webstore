@@ -7,12 +7,11 @@ const apiRequest = {
       url: params.url,
       method: params.method,
       data: params.data
-    };
+    }
 
     try {
-        
       const data = await apiService.customRequest(requestData)
-      return data;
+      return data
     } catch (error) {
       return handleError(error);
     }
@@ -24,7 +23,7 @@ const apiRequest = {
       method: params.method,
       data: params.data,
       responseType: params.responseType
-    };
+    }
 
     try {
       const data = await apiService.customRequest(requestData)

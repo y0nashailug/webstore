@@ -3,12 +3,11 @@ import { tokenService } from './storageService'
 import { BASE_URL } from '../config'
 
 const loggerInterceptor = config => {
-  /** Add logging here */
   return config;
 }
 
 const apiService = {
-  interceptor: null, // Mark: - 401 interceptor
+  interceptor: null,
 
   init(baseURL) {
     axios.defaults.baseURL = baseURL
@@ -57,16 +56,13 @@ const apiService = {
         if (error.status === 401 || error.message.indexOf(401) !== -1) {
           console.log('401: ', error.message.indexOf(401))
           //TODO: - Redux dispatch here.
-        //   this.$store.dispatch('auth/logout')
         }
-        // If error was not 401 just reject as is
         throw error
       },
     )
   },
 
   unmount401Interceptor() {
-    // Eject the interceptor
     axios.interceptors.response.eject(this.interceptor)
   },
 }

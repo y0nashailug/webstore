@@ -1,44 +1,42 @@
 import { TOKEN_KEY, USER_KEY } from '../config'
-
 export class AppStorage {
   constructor(storage) {
-    this.storage = storage || window.localStorage;
+    this.storage = storage || window.localStorage
 
-    /** Is storage is supported or not */
     if (!this.isSupported()) {
-      throw new Error('Storage is not supported by browser!');
+      throw new Error('Storage is not supported by browser!')
     }
   }
 
   setItem(key, value) {
-    this.storage.setItem(key, JSON.stringify(value));
+    this.storage.setItem(key, JSON.stringify(value))
   }
 
   getItem(key) {
-    return JSON.parse(this.storage.getItem(key));
+    return JSON.parse(this.storage.getItem(key))
   }
 
   removeItem(key) {
-    this.storage.removeItem(key);
+    this.storage.removeItem(key)
   }
 
   clear() {
-    this.storage.clear();
+    this.storage.clear()
   }
 
   isSupported() {
-    let supported = true;
+    let supported = true
 
     if (!this.storage) {
-      supported = false;
+      supported = false
     }
 
-    return supported;
+    return supported
   }
 }
 
-const appLocalStorage = new AppStorage();
-const appStorage = appLocalStorage; //MARK: - Default localstorage
+const appLocalStorage = new AppStorage()
+const appStorage = appLocalStorage //MARK: - Default localstorage
 
 const tokenService = {
   getToken() {

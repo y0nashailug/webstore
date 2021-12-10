@@ -8,21 +8,21 @@ const userService = {
       method: "POST",
       url: "auth/login",
       data: login,
-    };
+    }
 
     try {
-      const { data } = await apiService.customRequest(requestData);
+      const { data } = await apiService.customRequest(requestData)
 
-      tokenService.saveToken(data.jwt);
-      apiService.setHeader();
-      userInfoService.saveUser(data.user || {});
+      tokenService.saveToken(data.jwt)
+      apiService.setHeader()
+      userInfoService.saveUser(data.user || {})
 
       return {
         token: data.jwt,
         user: data.user,
       };
     } catch (error) {
-      return handleError(error);
+      return handleError(error)
     }
   },
   async getUser() {
@@ -33,10 +33,10 @@ const userService = {
     };
 
     try {
-      const { data } = await apiService.customRequest(requestData);
-      return data;
+      const { data } = await apiService.customRequest(requestData)
+      return data
     } catch (error) {
-      return handleError(error);
+      return handleError(error)
     }
   },
 };

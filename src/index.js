@@ -5,9 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import apiService from './services/apiService'
 import { tokenService } from './services/storageService'
+import { Provider } from 'react-redux'
+
+import configureStore from './store/configureStore'
+import loadSprites from './plugins/loadSvg'
+
+const store = configureStore()
 
 apiService.init(apiService.getBaseUrl())
 apiService.addInterceptor()
+loadSprites()
 
 if (tokenService.getToken()) {
   apiService.setHeader()
@@ -15,9 +22,11 @@ if (tokenService.getToken()) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  /* </React.StrictMode> */ ,
   document.getElementById('root')
 );
 
