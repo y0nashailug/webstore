@@ -1,4 +1,4 @@
-import { Route, Routes  } from 'react-router-dom';
+import { Route, Routes, useNavigate  } from 'react-router-dom';
 
 import Login from './common/Login';
 import Success from './Success';
@@ -13,11 +13,15 @@ import AddBuyer from './AddBuyer'
 import Header from '../components/Header'
 
 const Layout = () => {
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        navigate('/login')
+    }
     return (
         <div className="w-full">
             <div className="navigation">
                 <div className="main-header flex flex-row overflow-hidden h-full">
-                    <Header />
+                    <Header onClick={handleLogout} />
                 </div>
             </div>
             <div className="main-panel">

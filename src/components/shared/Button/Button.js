@@ -3,20 +3,23 @@ import Icon from '../Icon/Icon'
 import './Button.css'
 import { buttonVariants } from '../../../utils'
 
-const Button = ({ variant = 'primary', className, isWorking, iconSize, icon, children, disabled, onClick }) => {
+const Button = ({ type = 'button', variant = 'primary',
+ className = '', isWorking = false, iconSize = 18,
+  icon, children, disabled, onClick }) => {
 
-    //Mark: - such as variants
     const getButtonStyles = {
-        background: buttonVariants[variant]
+        '--bg-variant': buttonVariants[variant],
+        '--primary': buttonVariants.primary,
     }
 
     return (
         <button
-            type="button"
+            type={type}
                 // :class="[variant, { iconOnly: !$slots.default }, { isActive }]"
-            className={`primary inline-flex items-center justify-center
+            className={`inline-flex items-center justify-center
              h-8 align-middle leading-none whitespace-no-wrap rounded-sm
-              transition-all duration-100 appearance-none cursor-pointer select-none px-3 ` + className}
+              transition-all duration-100 appearance-none cursor-pointer
+               select-none px-3 ` + className + ' ' + variant }
                 disabled={disabled}
                 style={getButtonStyles}
                 onClick={onClick}>
@@ -41,6 +44,7 @@ Button.propTypes = {
     iconSize: PropTypes.number,
     icon: PropTypes.string,
     variant: PropTypes.string,
+    type: PropTypes.string,
     className: PropTypes.string,
     children: PropTypes.node,
     disabled: PropTypes.bool

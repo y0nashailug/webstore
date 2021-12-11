@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 const Product = ({ id, price, quantity, name }) => (
   <div className="flex">
-    <div className="mr-2">{name} - &#36;{price}{quantity ? ` x ${quantity}` : null}</div>
+    <div className="items-center w-full my-1 flex">
+      <div>{name}</div>  <div className="px-2 opacity-50">&#36;{price}</div>{quantity ? ` (${quantity})` : null}</div>
   </div>
 )
 

@@ -18,18 +18,21 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
   }
 
   return (
-    <div>
-      <div>
-        <h3>Products</h3>
+    <div className="flex flex-col items-center my-16 px-8">
+      <div className="w-full md:w-9/12 lg:w-9/12">
+        <div className="flex items-center justify-center text-center">
+        <span className="pl-2 text-xl mb-4">Products</span>
+      </div>
       </div>
       {!loading ? (
-        <div>
+        <div className="md:w-9/12 lg:w-6/12">
           <ProductList>
             {products.map((product) => (
               <ProductItem
                 product={product}
                 onAddToCart={() => addToCart(product.id)}
                 key={product.id}
+                className="card px-4 py-2 flex items-center w-full mb-4"
               />
             ))}
           </ProductList>

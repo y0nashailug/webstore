@@ -1,18 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
-import Button from './shared/Button/Button'
+import Icon from './shared/Icon/Icon'
 
-const ProductItem = ({ product, onAddToCart }) => {
+const ProductItem = ({ product, onAddToCart, className }) => {
 
     return (
-        <div>
+      <div className={className}>
+        <div className='flex flex-wrap container items-center'>
             <Product
                 name={product.name}
                 price={product.price}
                 quantity={product.quantity}
             />
-            <Button onClick={onAddToCart}>Add to cart</Button>
+            <Icon
+                className="text-textLight cursor-pointer ml-4"
+                size={20}
+                name="cart"
+                onClick={onAddToCart}
+                title='Add to cart'
+              />
+        </div>
       </div>
     )
 }

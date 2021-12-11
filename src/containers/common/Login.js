@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate  } from 'react-router-dom';
 import PropTypes from 'prop-types'
@@ -10,16 +10,19 @@ import { isRequired } from '../../utils'
 
 const Login = ({ dispatch }) => {
     const navigate = useNavigate()
+    const [isWorking, setIsWorking] = useState(false)
     const form = {
         username: '',
         password: ''
     }
 
-    const handleSubmit = async() => {
-        if (isValidDTO()) {
-            await dispatch(loginAction(form))
-            navigate('/products')
-        }
+    const handleSubmit = async(e) => {
+      e.preventDefault()
+      if (isValidDTO()) {
+        setIsWorking(true)
+        await dispatch(loginAction(form))
+        navigate('/products')
+      }
     }
 
     const isValidDTO = () => {
@@ -35,8 +38,7 @@ const Login = ({ dispatch }) => {
         <div className="w-full bg-white">
         <div className="w-full flex flex-row h-full">
           <div className="w-full">
-            <form
-            //   @submit.prevent="handleSubmit"
+            <form onSubmit={handleSubmit}
               className="flex items-center justify-center h-full px-8">
               <div className="modal-dialog">
                 <div className="modal-content p-4">
@@ -66,7 +68,7 @@ const Login = ({ dispatch }) => {
 
                   <div className="modal-footer">
                     <div className="text-center">
-                        <Button className="w-full" type="submit" isWorking={true} onClick={handleSubmit} disabled={isValidDTO()}>Login</Button>
+                        <Button className="w-full" type="submit" isWorking={isWorking} disabled={isValidDTO()}>Login</Button>
                     </div>
                   </div>
                 </div>

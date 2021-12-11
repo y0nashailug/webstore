@@ -75,7 +75,7 @@
 .w-full {
   width: 100%;
 }
-.navigation {
+/* .navigation {
   bottom: 0px;
   left: 0px;
   position: fixed;
@@ -88,7 +88,7 @@
   position: fixed;
   top: 0px;
   z-index: 200;
-}
+} */
 
 .modal-backdrop {
   background: rgba(27, 31, 60, 0.54);
@@ -140,6 +140,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card-wrap {
+  touch-action: manipulation;
+  /* cursor: pointer; */
+  margin-bottom: 5px;
+}
+.card {
+  padding: 10px;
+  background: #fff;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
+  border-radius: 0.125rem;
+  width: 100%;
+}
+.card:hover {
+  background-color: #ebecf0;
 }
 
 @keyframes fadeIn {
