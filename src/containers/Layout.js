@@ -7,6 +7,7 @@ import CartContainer from './CartContainer';
 import AddProduct from './AddProduct'
 import SellerContainer from './SellerContainer'
 import BuyerContainer from './BuyerContainer'
+import OrderContainer from './OrderContainer'
 import AddSeller from './AddSeller'
 import AddBuyer from './AddBuyer'
 import Header from '../components/Header'
@@ -26,6 +27,7 @@ const Layout = () => {
                 <Route exact path="/add-buyer" element={<AddBuyer />} />
                 <Route exact path="/sellers" element={<SellerContainer />} />
                 <Route exact path="/buyers" element={<BuyerContainer />} />
+                <Route exact path="/orders" element={<OrderContainer />} />
             </Routes>
         </div>
     )

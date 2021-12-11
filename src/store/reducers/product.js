@@ -5,7 +5,7 @@ const initialState = {
     products: []
 }
 
-const productReducers = (state = initialState, action) => {
+const products = (state = initialState, action) => {
     switch(action.type) {
         case GET_PRODUCTS:
             return {
@@ -26,4 +26,4 @@ const productReducers = (state = initialState, action) => {
 
 export const getProduct = (state, id) => state.products.find(product => product.id === id)
 
-export default productReducers
+export default products

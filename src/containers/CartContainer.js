@@ -4,14 +4,22 @@ import { connect } from 'react-redux'
 import { checkout } from '../actions'
 import { getTotal, getCartProducts } from '../store/reducers'
 import Cart from '../components/Cart'
+import { useNavigate } from 'react-router-dom'
 
 const CartContainer = ({ products, total, checkout }) => {
 
+  const navigate = useNavigate()
+  const handleRedirect = () => {
+    navigate('/products')
+  }
+
   return (
     <Cart
-    products={products}
-    total={total}
-    onCheckoutClicked={() => checkout(products)} />
+      products={products}
+      total={total}
+      onCheckoutClicked={() => checkout(products)}
+      redirect={() => handleRedirect()}
+     />
   )
 }
 

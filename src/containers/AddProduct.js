@@ -1,4 +1,4 @@
-import AddProduct from '../components/forms/AddProduct'
+import Product from '../components/forms/Product'
 import { connect } from 'react-redux'
 import { addProduct } from '../actions'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +12,7 @@ const AddProductContainer = ({ dispatch }) => {
     }
 
     return (<div>
-        <AddProduct onProductSubmit={handleSubmit}/>
+        <Product onProductSubmit={handleSubmit}/>
     </div>)
 }
 

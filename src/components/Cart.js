@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 import Button from './shared/Button/Button'
 
-const Cart  = ({ products, total, onCheckoutClicked }) => {
+const Cart  = ({ products, total, onCheckoutClicked, redirect }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -23,10 +23,12 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       <h3>Your Cart</h3>
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
-      <Button onClick={onCheckoutClicked}
+      {hasProducts ? <Button onClick={onCheckoutClicked}
         disabled={hasProducts ? false : true}>
         Checkout
-      </Button>
+      </Button>: <Button onClick={redirect}>
+        Go to products
+      </Button>}
     </div>
   )
 }

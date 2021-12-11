@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import PropTypes from 'prop-types'
 
-const AddProduct = ({ onProductSubmit }) => {
+const Product = ({ onProductSubmit }) => {
 
     const formRef = useRef()
 
@@ -29,10 +29,10 @@ const AddProduct = ({ onProductSubmit }) => {
     )
 }
 
-AddProduct.propTypes = {
+Product.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     quantity: PropTypes.number
 }
 
-export default AddProduct
+export default Product
