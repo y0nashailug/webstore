@@ -41,5 +41,11 @@ export const APIS = {
       url: 'buyers',
       method: 'POST'
     },
-  }
+  },
+  orders: {
+    get: {
+      url: 'orders',
+      method: 'GET'
+    }
+  },
 }

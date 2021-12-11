@@ -1,13 +1,20 @@
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import OrderList from '../components/lists/OrderList'
 import OrderItem from '../components/lists/OrderItem'
+import { getAllOrders } from '../actions'
 
-const OrderContainer = ({ orders, loading }) => {
+const OrderContainer = ({ orders, loading, getAllOrders }) => {
+
+    useEffect(() => getAllOrders(), [])
 
     return (
         <div>
+            <div>
+                <h3>Orders</h3>
+            </div>
             {!loading ? <OrderList>
                 {orders.map(order => (
                     <OrderItem order={order} />
@@ -18,10 +25,10 @@ const OrderContainer = ({ orders, loading }) => {
 }
 
 OrderContainer.propTypes = {
-    orders: PropTypes.shape({
+    orders: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         total: PropTypes.number.isRequired
-    }).isRequired
+    })).isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -29,4 +36,8 @@ const mapStateToProps = (state) => ({
     loading: state.orders.loading
 })
 
-export default connect(mapStateToProps)(OrderContainer)
+const mapDispatchToProps = (dispatch) => ({
+    getAllOrders: () => dispatch(getAllOrders)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderContainer)

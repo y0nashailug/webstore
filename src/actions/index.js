@@ -115,3 +115,14 @@ export const getAllBuyers = () => async dispatch => {
         payload: data
     })
 }
+
+export const getAllOrders = () => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.orders.get,
+        data: {}
+    })
+    dispatch({
+        type: types.GET_ORDERS,
+        payload: data
+    })
+}

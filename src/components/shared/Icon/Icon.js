@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types'
+
 const Icon = ({ name, size, fill }) => {
-    
     const iconStyles = {
         width: `${size}px`,
         height: `${size}px`,
@@ -17,4 +18,9 @@ const Icon = ({ name, size, fill }) => {
     )
 }
 
+Icon.propTypes = {
+  name: PropTypes.string,
+  size: PropTypes.number,
+  fill: PropTypes.string
+}
 export default Icon

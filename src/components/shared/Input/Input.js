@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Icon from '../Icon/Icon'
 import './Input.css'
 
@@ -10,6 +11,7 @@ const Input = ({ icon, hasIcon, iconSize, onBlur, type }) => {
     const handleOnBlur = (e) => {
         onBlur(e.target.value)
     }
+
     return (
         <div style={iconStyles} className="inputContainer">
         {hasIcon ?<div v-if="icon" class="inputIconContainer">
@@ -25,6 +27,12 @@ const Input = ({ icon, hasIcon, iconSize, onBlur, type }) => {
     )
 }
 
-Input.propTypes = {}
+Input.propTypes = {
+    icon: PropTypes.string,
+    hasIcon: PropTypes.bool,
+    iconSize: PropTypes.number,
+    onBlur: PropTypes.func.isRequired,
+    type: PropTypes.string
+}
 
 export default Input

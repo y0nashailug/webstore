@@ -16,20 +16,17 @@ const Button = ({ isWorking, iconSize, icon, children, disabled, onClick }) => {
                 duration-100 appearance-none cursor-pointer select-none px-3"
                 disabled={disabled}
                 style={getButtonStyles}
-                onClick={onClick}
-            >
-            {isWorking ? <Icon
-            size={iconSize}
-            name="spin"
-            className="spinner"
-            />: null }
-
-            {!isWorking && icon ? <Icon
-            size={iconSize}
-            name={icon}
-            className="spinner"
-            />: null }
-
+                onClick={onClick}>
+                    {isWorking ? <Icon
+                    size={iconSize}
+                    name="spin"
+                    className="spinner"
+                    />: null }
+                    {!isWorking && icon ? <Icon
+                    size={iconSize}
+                    name={icon}
+                    className="spinner"
+                    />: null }
             <div className={ isWorking || icon  ? 'pl-2': null}>
             {children}
             </div>
