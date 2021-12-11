@@ -157,7 +157,9 @@
 .card:hover {
   background-color: #ebecf0;
 }
-
+.cart-container {
+  min-width: 240px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

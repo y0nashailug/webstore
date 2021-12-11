@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 import Button from './shared/Button/Button'
 
-const Cart  = ({ products, total, onCheckoutClicked, redirect }) => {
+const Cart  = ({ products, total, onCheckoutClicked, className }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -15,20 +15,18 @@ const Cart  = ({ products, total, onCheckoutClicked, redirect }) => {
       />
     )
   ) : (
-    <span>Empty cart.</span>
+    <span className="text-13">Your cart is empty.</span>
   )
 
   return (
-    <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
-      <p>Total: &#36;{total}</p>
-      {hasProducts ? <Button onClick={onCheckoutClicked}
+    <div className={className}>
+      <div className="text-15 text-textLight py-2">Your shopping cart</div>
+      <div className="py-1">{nodes}</div>
+      {hasProducts ? <p>Total: &#36;{total}</p>: null}
+      {hasProducts ? <Button className="w-full mt-2" variant="empty" onClick={onCheckoutClicked}
         disabled={hasProducts ? false : true}>
         Checkout
-      </Button>: <Button onClick={redirect}>
-        Go to products
-      </Button>}
+      </Button>: null}
     </div>
   )
 }

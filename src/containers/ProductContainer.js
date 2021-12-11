@@ -36,7 +36,7 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
               />
             ))}
           </ProductList>
-          <Button onClick={() => handleNavigate("/carts")}>go to cart</Button>
+          <Button onClick={() => handleNavigate("/carts")}>Go to cart</Button>
         </div>
       ) : (
         <div>Loading...</div>

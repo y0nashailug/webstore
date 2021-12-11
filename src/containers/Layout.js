@@ -17,10 +17,11 @@ const Layout = () => {
     const handleLogout = () => {
         navigate('/login')
     }
+
     return (
         <div className="w-full">
             <div className="navigation">
-                <div className="main-header flex flex-row overflow-hidden h-full">
+                <div className="main-header flex flex-row h-full">
                     <Header onClick={handleLogout} />
                 </div>
             </div>
