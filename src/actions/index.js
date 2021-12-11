@@ -46,7 +46,6 @@ export const checkout = (products) => (dispatch, getState) => {
 }
 
 export const addToCart = (id) => (dispatch, getState) => {
-    console.log("id: ", id, getState())
     dispatch({
         type: types.ADD_TO_CART,
         payload: id

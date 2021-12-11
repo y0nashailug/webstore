@@ -5,8 +5,10 @@ import Layout from './containers/Layout';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div id="App">
+        <div className='content'>
         <Layout />
+        </div>
       </div>
     </Router>
   );

@@ -60,10 +60,6 @@ const mapStateToProps = ({ products }) => ({
   loading: products.loading,
 })
 
-// const mapDispatchToProps = (dispatch) => ({
-//   getAllProducts: () => dispatch(getAllProducts) //Action
-// })
-
 export default connect(mapStateToProps, { getAllProducts, addToCart })(
   ProductContainer
 )
