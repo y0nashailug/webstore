@@ -34,15 +34,15 @@ const Login = ({ dispatch }) => {
     return (
         <div className="w-full bg-white">
         <div className="w-full flex flex-row h-full">
-          <div className="w-6/12">
+          <div className="w-full">
             <form
             //   @submit.prevent="handleSubmit"
               className="flex items-center justify-center h-full px-8">
-              <div className="modal-dialog" role="document">
+              <div className="modal-dialog">
                 <div className="modal-content p-4">
                   <div className="modal-body">
                     <div className="block">
-                      <h4 className="m-auto mb-1 font-bold text-lg">Login</h4>
+                      <h4 className="m-auto text-center mb-1 font-bold text-lg">Login</h4>
                       {/* <Message v-if="typeof localError === 'string'" :message="localError" :success="false" /> */}
                     </div>
   
@@ -66,7 +66,7 @@ const Login = ({ dispatch }) => {
 
                   <div className="modal-footer">
                     <div className="text-center">
-                        <Button className="w-full" type="submit" onClick={handleSubmit} disabled={isValidDTO()}>Login</Button>
+                        <Button className="w-full" type="submit" isWorking={true} onClick={handleSubmit} disabled={isValidDTO()}>Login</Button>
                     </div>
                   </div>
                 </div>

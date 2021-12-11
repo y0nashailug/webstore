@@ -15,3 +15,13 @@ export function responseFields(attributes) {
 export function isRequired(value) {
     return ['', null, undefined].indexOf(value) === -1
 }
+
+export const buttonVariants = {
+  primary: '#10844c', //  
+  success: '#0B875B', //  
+  danger: '#E13C3C',
+  warning: '#F89C1C',
+  info: '#0fb9b1',
+  secondary: '#F4F5F7', //  1b1f3c
+  brand: '#1b1f3c', //  
+}

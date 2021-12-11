@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Icon = ({ name, size, fill }) => {
+const Icon = ({ className, name, size = 18, fill = '#fff' }) => {
     const iconStyles = {
         width: `${size}px`,
         height: `${size}px`,
@@ -9,7 +9,7 @@ const Icon = ({ name, size, fill }) => {
     }
 
     return (
-        <svg style={iconStyles}>
+        <svg style={iconStyles} className={className}>
         <use
           xmlnsXlink="http://www.w3.org/1999/xlink"
           xlinkHref={'#' + name}
@@ -21,6 +21,7 @@ const Icon = ({ name, size, fill }) => {
 Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
-  fill: PropTypes.string
+  fill: PropTypes.string,
+  className: PropTypes.string,
 }
 export default Icon

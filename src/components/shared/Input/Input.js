@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Icon from '../Icon/Icon'
 import './Input.css'
 
-const Input = ({ icon, hasIcon, iconSize, onBlur, type }) => {
+const Input = ({ className, icon, hasIcon, iconSize, onBlur, type }) => {
 
     const iconStyles = {
         '--iconContainerWidth': `${iconSize * 2}px`
@@ -14,7 +14,7 @@ const Input = ({ icon, hasIcon, iconSize, onBlur, type }) => {
 
     return (
         <div style={iconStyles} className="inputContainer">
-        {hasIcon ?<div v-if="icon" class="inputIconContainer">
+        {hasIcon ?<div v-if="icon" className="inputIconContainer">
           <Icon name={icon} />
         </div>: null}
         <input
@@ -29,6 +29,7 @@ const Input = ({ icon, hasIcon, iconSize, onBlur, type }) => {
 
 Input.propTypes = {
     icon: PropTypes.string,
+    className: PropTypes.string,
     hasIcon: PropTypes.bool,
     iconSize: PropTypes.number,
     onBlur: PropTypes.func.isRequired,

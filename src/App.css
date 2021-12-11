@@ -142,6 +142,33 @@
   justify-content: center;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin both infinite 0.7s;
+}
+
+.fadeIn {
+  animation: fadeIn 0.2s both;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
