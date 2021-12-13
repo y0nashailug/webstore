@@ -1,31 +1,60 @@
-import { useRef } from "react"
 import PropTypes from 'prop-types'
+import { isRequired } from '../../utils'
+import Input from '../shared/Input/Input'
+import Button from '../shared/Button/Button'
 
 const Product = ({ onProductSubmit }) => {
 
-    const formRef = useRef()
+    const form = {
+        name: '',
+        price: '',
+        quantity: ''
+    }
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-        // dispatch()
-        const product = {
-            name: formRef.current.name.value,
-            price: formRef.current.price.value,
-            quantity: formRef.current.quantity.value
+    const handleSubmit = () => {
+        if (isValidDTO()) {
+            onProductSubmit(form) //onSubmit(form)
         }
+    }
 
-        onProductSubmit(product)
+    const isValidDTO = () => {
+        return isRequired(form.username) &&
+        isRequired(form.name)
+    }
+
+    const setFieldValue = (type, value) => {
+        form[type] = value
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} ref={formRef}>
-                <input name="name" type="text" placeholder="Name" />
-                <input name="price" type="text" placeholder="Price" />
-                <input name="quantity" type="text" placeholder="Quantity" />
-                <input type="submit" value="Add" />
-            </form>
+        <div className="w-75">
+        <div className="flex items-center">
+            <div className="formField">
+                <label className="formFieldLabel" htmlFor="name">Name</label>
+                <div className="relative">
+                    <Input name="name" onBlur={(val) => setFieldValue('name', val)} />
+                </div>
+                <div className="formFieldTip"></div>
+            </div>
+
+            <div className="formField">
+                <label className="formFieldLabel" htmlFor="price">Price</label>
+                <div className="relative">
+                    <Input name="price" onBlur={(val) => setFieldValue('price', val)} />
+                </div>
+                <div className="formFieldTip"></div>
+            </div>
+
+            <div className="formField">
+                <label className="formFieldLabel" htmlFor="quantity">Quantity</label>
+                <div className="relative">
+                    <Input name="quantity" onBlur={(val) => setFieldValue('quantity', val)} />
+                </div>
+                <div className="formFieldTip"></div>
+            </div>
+            <Button onClick={handleSubmit} disabled={isValidDTO()}>Add</Button>
         </div>
+    </div>
     )
 }
 

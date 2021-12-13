@@ -27,25 +27,25 @@ const Buyer = ({ onSubmit }) => {
 
     return (
         <div className="w-75">
-        <div className="flex items-center">
-            <div className="formField">
-                <label className="formFieldLabel" htmlFor="username">Username</label>
-                <div className="relative">
-                    <Input name="username" onBlur={(val) => setFieldValue('username', val)} />
+            <div className="flex items-center">
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="username">Username</label>
+                    <div className="relative">
+                        <Input name="username" onBlur={(val) => setFieldValue('username', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
                 </div>
-                <div className="formFieldTip"></div>
-            </div>
 
-            <div className="formField">
-                <label className="formFieldLabel" htmlFor="username">Name</label>
-                <div className="relative">
-                    <Input name="name" onBlur={(val) => setFieldValue('name', val)} />
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="username">Name</label>
+                    <div className="relative">
+                        <Input name="name" onBlur={(val) => setFieldValue('name', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
                 </div>
-                <div className="formFieldTip"></div>
+                <Button onClick={handleSubmit} disabled={isValidDTO()}>Add</Button>
             </div>
-            <Button onClick={handleSubmit} disabled={isValidDTO()}>Add</Button>
         </div>
-    </div>
     )
 }
 
