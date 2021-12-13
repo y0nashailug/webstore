@@ -39,7 +39,7 @@ const Login = ({ dispatch }) => {
         <div className="w-full flex flex-row h-full">
           <div className="w-full">
             <form onSubmit={handleSubmit}
-              className="flex items-center justify-center h-full px-8">
+              className="flex items-center justify-center h-full px-8 h-screen">
               <div className="modal-dialog">
                 <div className="modal-content p-4">
                   <div className="modal-body">
