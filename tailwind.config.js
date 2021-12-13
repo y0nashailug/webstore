@@ -108,6 +108,7 @@ module.exports = {
       none: 'none',
       sidebar: '1px 0 0 0 #e6e6e6;',
       'outline-white': '0 0 0 2px #fff',
+      allSides: '0px 1px 0px 1px #e6e6e6'
     },
     container: {},
     cursor: {

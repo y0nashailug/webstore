@@ -66,7 +66,7 @@ const Login = ({ dispatch }) => {
 
                   </div>
 
-                  <div className="modal-footer">
+                  <div className="modal-footer mt-4">
                     <div className="text-center">
                         <Button className="w-full" type="submit" isWorking={isWorking} disabled={isValidDTO()}>Login</Button>
                     </div>
