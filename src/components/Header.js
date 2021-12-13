@@ -28,10 +28,10 @@ const Header = ({ user, onClick, dispatch }) => {
                 </div>
                 <div className="h-full bg-backgroundLight" style={{ width: '2px' }}></div>
                 <div className="text-15 mx-2">{user.username}</div>
-                <div className="itemIcon mx-4 flex">
+                <div className="itemIcon mx-2 flex">
                     <Avatar avatarUrl={DefaultProfile} className="shadow-outline-white" size={28} />
                 </div>
-                <div>
+                <div className="mx-2">
                     <Icon name="logout" className="cursor-pointer text-primary" size={16} onClick={handleLogout}/>
                 </div>
             </div>
