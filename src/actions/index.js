@@ -58,7 +58,7 @@ export const loginAction = (userInfo) => async dispatch => {
 }
 
 export const addProduct = (product) => async dispatch => {
-    const { data } = await apiRequest.request({
+    const { data } = await apiRequest.upload({
         ...APIS.products.post,
         data: product
     })

@@ -14,8 +14,8 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
     <div className="flex flex-col items-center my-16 px-8">
       <div className="w-full md:w-9/12 lg:w-9/12">
         <div className="flex items-center justify-center text-center">
-        <span className="pl-2 text-xl mb-4">Products</span>
-      </div>
+          <span className="pl-2 text-xl mb-4">Products</span>
+        </div>
       </div>
       {!loading ? (
         <div className="md:w-9/12 lg:w-9/12">

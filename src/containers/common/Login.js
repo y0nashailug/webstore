@@ -39,7 +39,7 @@ const Login = ({ dispatch }) => {
         <div className="w-full flex flex-row h-full">
           <div className="w-full">
             <form onSubmit={handleSubmit}
-              className="flex items-center justify-center h-full px-8 h-screen">
+              className="flex items-center justify-center px-8 h-screen">
               <div className="modal-dialog">
                 <div className="modal-content p-4">
                   <div className="modal-body">
@@ -63,12 +63,11 @@ const Login = ({ dispatch }) => {
                         </div>
                         <div className="formFieldTip"></div>
                     </div>
-
                   </div>
 
                   <div className="modal-footer mt-4">
                     <div className="text-center">
-                        <Button className="w-full" type="submit" isWorking={isWorking} disabled={isValidDTO()}>Login</Button>
+                        <Button className="w-full" type="submit" isWorking={isWorking}>Login</Button>
                     </div>
                   </div>
                 </div>

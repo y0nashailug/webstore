@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
+import { Link } from 'react-router-dom'
 import { getUser, logout } from '../actions'
 import PropTypes from 'prop-types'
 import Avatar from "./shared/Avatar/Avatar"
@@ -20,7 +21,8 @@ const Header = ({ user, onClick, dispatch }) => {
         <div className="flex items-center px-8 py-3 w-full">
             <div className="logo">
                 <div className="text-primary logo-text font-medium flex items-center">
-                <Icon name="cart" size={24} className="mr-3" /><span>Webstore</span></div>
+                    <Link to={'/store/products'} className="flex"><Icon name="cart" size={24} className="mr-3" /><span>Webstore</span></Link>
+                </div>
             </div>
             <div className="flex items-center ml-auto">
                 <div>
