@@ -7,7 +7,7 @@ const BuyerContainer = () => {
     const navigate = useNavigate()
 
     const handleOnAddBuyer = () => {
-        navigate('/add-buyer')
+        navigate('/store/add-buyer')
     }
 
     return (

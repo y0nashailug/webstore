@@ -1,17 +1,15 @@
-import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Layout from './containers/Layout';
+import { useRoutes } from 'react-router-dom'
+import { tokenService } from './services/storageService'
+import routes from './router'
+import './App.css'
 
 function App() {
+  const loggedIn = !!tokenService.getToken()
+  const routing = useRoutes(routes(loggedIn))
+
   return (
-    <Router>
-      <div id="App">
-        <div className='content'>
-        <Layout />
-        </div>
-      </div>
-    </Router>
-  );
+    <>{routing}</>
+  )
 }
 
-export default App;
+export default App

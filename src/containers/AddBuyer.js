@@ -9,7 +9,7 @@ const AddBuyer = ({ dispatch }) => {
     const navigate = useNavigate()
     const handleSubmit =  async product => {
         await dispatch(addProduct(product))
-        navigate('/sellers')
+        navigate('/store/sellers')
     }
 
     return (<div>

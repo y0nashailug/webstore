@@ -8,7 +8,7 @@ const AddProductContainer = ({ dispatch }) => {
     const navigate = useNavigate()
     const handleSubmit =  async product => {
         await dispatch(addProduct(product))
-        navigate('/products')
+        navigate('/store/products')
     }
 
     return (<div>

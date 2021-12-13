@@ -31,7 +31,6 @@ const Button = ({ type = 'button', variant = 'primary',
                     {!isWorking && icon ? <Icon
                     size={iconSize}
                     name={icon}
-                    className="spinner"
                     />: null }
             <div className={ isWorking || icon  ? 'pl-2': null}>
             {children}

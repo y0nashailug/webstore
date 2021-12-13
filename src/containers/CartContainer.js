@@ -10,7 +10,7 @@ const CartContainer = ({ products, total, checkout }) => {
 
   const navigate = useNavigate()
   const handleRedirect = () => {
-    navigate('/products')
+    navigate('/store/products')
   }
 
   return (
