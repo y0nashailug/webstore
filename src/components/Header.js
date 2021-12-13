@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Avatar from "./shared/Avatar/Avatar"
 import Icon from "./shared/Icon/Icon"
 import DefaultProfile from '../assets/avatar.png'
+import CartFixed from "./CartFixed"
 
 const Header = ({ user, onClick, dispatch }) => {
 
@@ -16,12 +17,23 @@ const Header = ({ user, onClick, dispatch }) => {
     }
 
     return (<div className="w-full flex bg-backgroundLightest">
-        <div className="flex ml-auto items-center p-3">
-            <div className="text-15">{user.username}</div>
-            <div className="itemIcon mx-4 flex">
-                <Avatar avatarUrl={DefaultProfile} className="shadow-outline-white" size={28} />
+        <div className="flex items-center px-8 py-3 w-full">
+            <div className="logo">
+                <div className="logo-text text-textMedium font-medium">Webstore</div>
             </div>
-            <div><Icon name="logout" className="cursor-pointer text-primary" size={16} onClick={handleLogout}/></div>
+            <div className="flex items-center ml-auto">
+                <div>
+                    <CartFixed />
+                </div>
+                <div className="h-full bg-backgroundLight" style={{ width: '2px' }}></div>
+                <div className="text-15 mx-2">{user.username}</div>
+                <div className="itemIcon mx-4 flex">
+                    <Avatar avatarUrl={DefaultProfile} className="shadow-outline-white" size={28} />
+                </div>
+                <div>
+                    <Icon name="logout" className="cursor-pointer text-primary" size={16} onClick={handleLogout}/>
+                </div>
+            </div>
         </div>
     </div>)
 }

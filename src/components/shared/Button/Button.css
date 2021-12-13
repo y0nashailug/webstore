@@ -16,7 +16,7 @@
   outline: none;
 }
 .transparent {
-  background: #e2e8f0;
+  background: none;
   outline: none;
 }
 .secondary,
@@ -30,8 +30,8 @@
 }
 .secondary:not(:disabled):active,
 .empty:not(:disabled):active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(210 229 254 / var(--tw-bg-opacity));
+    background-color: #D2E5FE;
+    color: var(--primary);
 }
 
 .button:disabled {

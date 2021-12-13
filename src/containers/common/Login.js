@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate  } from 'react-router-dom';
 import PropTypes from 'prop-types'
@@ -21,7 +21,7 @@ const Login = ({ dispatch }) => {
       if (isValidDTO()) {
         setIsWorking(true)
         await dispatch(loginAction(form))
-        navigate('/products')
+        navigate('/store/products')
       }
     }
 

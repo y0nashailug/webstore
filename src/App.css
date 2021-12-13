@@ -143,7 +143,6 @@
 }
 
 .card-wrap {
-  touch-action: manipulation;
   /* cursor: pointer; */
   margin-bottom: 5px;
 }
@@ -153,9 +152,11 @@
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
   border-radius: 0.125rem;
   width: 100%;
+  transition-property: all;
+  transition-duration: 100ms;
 }
-.card:hover {
-  background-color: #ebecf0;
+.cart-container {
+  min-width: 240px;
 }
 
 @keyframes fadeIn {

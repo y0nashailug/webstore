@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Icon from '../Icon/Icon'
 import './Input.css'
 
-const Input = ({ className, icon, hasIcon, iconSize, onBlur, type }) => {
+const Input = ({ className, icon, hasIcon, iconSize = 16, onBlur, type }) => {
 
     const iconStyles = {
         '--iconContainerWidth': `${iconSize * 2}px`

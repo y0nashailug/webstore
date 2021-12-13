@@ -7,7 +7,7 @@ const SellerContainer = () => {
     const navigate = useNavigate()
 
     const handleOnAddSeller = () => {
-        navigate('/add-seller')
+        navigate('/store/add-seller')
     }
 
     return (
