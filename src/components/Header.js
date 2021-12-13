@@ -19,7 +19,8 @@ const Header = ({ user, onClick, dispatch }) => {
     return (<div className="w-full flex bg-backgroundLightest">
         <div className="flex items-center px-8 py-3 w-full">
             <div className="logo">
-                <div className="logo-text text-textMedium font-medium">Webstore</div>
+                <div className="text-primary logo-text font-medium flex items-center">
+                <Icon name="cart" size={24} className="mr-3" /><span>Webstore</span></div>
             </div>
             <div className="flex items-center ml-auto">
                 <div>

@@ -21,7 +21,7 @@ const CartFixed = ({ products, total, checkout }) => {
 
     return (
         <div className="relative">
-            <div className="mr-4 flex items-center">
+            <div className="mr-2 flex items-center">
                 <Button onClick={handleToggle} icon="cart" iconSize={16} variant="transparent">
                     <span className="px-1 text-primary">({products.length})</span>
                 </Button>

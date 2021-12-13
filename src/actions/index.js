@@ -62,7 +62,6 @@ export const addProduct = (product) => async dispatch => {
         ...APIS.products.post,
         data: product
     })
-
     dispatch({
         type: types.ADD_PRODUCT,
         payload: data
@@ -79,7 +78,6 @@ export const addSeller = (seller) => async dispatch => {
         payload: data,
     })
 }
-
 
 export const addBuyer = (buyer) => async dispatch => {
     const { data } = await apiRequest.request({

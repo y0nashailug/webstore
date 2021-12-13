@@ -1,11 +1,10 @@
 import { apiBaseUrl } from '../environment'
 
 export const BASE_URL = `${apiBaseUrl}/api`
+export const IMAGE_BASE_URL = `${apiBaseUrl}/api/uploads`
 
-export const TOKEN_KEY = 'access_token';
-export const USER_KEY = '_u_k';
-
-export const routeAccess = {}
+export const TOKEN_KEY = 'access_token'
+export const USER_KEY = '_u_k'
 
 export const APIS = {
   login: {

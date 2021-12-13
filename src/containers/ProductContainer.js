@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import { getAllProducts, addToCart } from "../actions"
 import ProductList from "../components/ProductList"
 import ProductItem from "../components/ProductItem"
+import Icon from '../components/shared/Icon/Icon'
 
 const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
   
@@ -32,7 +33,7 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
           </ProductList>
         </div>
       ) : (
-        <div>Loading...</div>
+        <div><Icon name="spin" className="spinner" /></div>
       )}
     </div>
   )

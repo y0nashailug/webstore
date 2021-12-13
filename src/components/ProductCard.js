@@ -15,16 +15,18 @@ const ProductCard = ({ price, name, category, onAddToCart }) => {
                         width: '240px'
                     }}></div>
                 </div>
-                <p className="text-lg text-textDarkest">{ name }</p>
-                <div className="py-2 text-sm font-normal text-textLight">Category: { category }</div>
-                <div className="flex justify-between items-center">
-                    <div className="flex items-center w-full">
-                        <div className="flex items-center">
-                            <span className="text-13 opacity-50">Price</span>
-                            <div className="px-2">&#36;{price}</div>
-                        </div>
-                        <div className="ml-auto">
-                            <Button variant="empty" onClick={onAddToCart}>Add to cart</Button>
+                <div className="p-2">
+                    <p className="text-lg text-textDarkest">{ name }</p>
+                    <div className="py-2 text-sm font-normal text-textLight">Category: { category }</div>
+                    <div className="flex justify-between items-center">
+                        <div className="flex items-center w-full">
+                            <div className="flex items-center">
+                                <span className="text-13 opacity-50">Price</span>
+                                <div className="px-2">&#36;{price}</div>
+                            </div>
+                            <div className="ml-auto">
+                                <Button variant="empty" onClick={onAddToCart}>Add to cart</Button>
+                            </div>
                         </div>
                     </div>
                 </div>

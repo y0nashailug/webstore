@@ -143,18 +143,9 @@
 }
 
 .card-wrap {
-  /* cursor: pointer; */
   margin-bottom: 5px;
 }
-.card {
-  padding: 10px;
-  background: #fff;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
-  border-radius: 0.125rem;
-  width: 100%;
-  transition-property: all;
-  transition-duration: 100ms;
-}
+
 .cart-container {
   min-width: 240px;
 }

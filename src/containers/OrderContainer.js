@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import OrderList from '../components/lists/OrderList'
 import OrderItem from '../components/lists/OrderItem'
 import { getAllOrders } from '../actions'
+import Icon from '../components/shared/Icon/Icon'
 
 const OrderContainer = ({ orders, loading, getAllOrders }) => {
 
@@ -19,7 +20,7 @@ const OrderContainer = ({ orders, loading, getAllOrders }) => {
                 {orders.map(order => (
                     <OrderItem order={order} />
                 ))}
-            </OrderList>: <div>Loading...</div>}
+            </OrderList>: <div><Icon name="spin" className="spinner" /></div>}
         </div>
     )
 }
