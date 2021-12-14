@@ -6,7 +6,7 @@
 @layer components {
     .card {
       background-color: theme('colors.white');
-      border-radius: theme('borderRadius.lg');
+      border-radius: theme('borderRadius.default');
       /* padding: theme('spacing.6'); */
       box-shadow: theme('boxShadow.allSides');
       overflow: hidden;

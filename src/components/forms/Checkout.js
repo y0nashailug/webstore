@@ -13,7 +13,8 @@ const Checkout = ({ onSubmit }) => {
         zip: ''
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         if (isValidDTO()) {
             onSubmit(form)
         }

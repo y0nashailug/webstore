@@ -9,12 +9,13 @@ import CartContainer from '../containers/CartContainer'
 import AddBuyer from '../containers/AddBuyer'
 import AddSeller from '../containers/AddSeller'
 import AddProduct from '../containers/AddProduct'
+import AddAdmin from '../containers/AddAdmin'
 import Layout from '../containers/Layout'
 
 const routes = (loggedIn) => [
   {
     path: '/store',
-    element: loggedIn ? <Layout /> : <Navigate to="/login" />,
+    element: loggedIn ? <Layout />: <Navigate to="/login" />,
     children: [
       { path: 'products', element: <ProductContainer /> },
       { path: 'checkout', element: <CheckoutContainer /> },
@@ -25,6 +26,7 @@ const routes = (loggedIn) => [
       { path: 'add-buyer', element: <AddBuyer /> },
       { path: 'add-seller', element: <AddSeller /> },
       { path: 'add-product', element: <AddProduct /> },
+      { path: 'add-admin', element: <AddAdmin /> },
       { path: '', element: <Navigate to="/store/products" /> }
     ],
   }, {

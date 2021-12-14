@@ -7,13 +7,13 @@ const initialState = {
 
 const sellerReducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADD_SELLER:
+        case GET_SELLERS:
             return {
                 ...state,
                 loading: false,
                 sellers: action.payload
             }
-        case GET_SELLERS:
+        case ADD_SELLER:
             return {
                 ...state,
                 sellers: [...state.sellers, action.payload],

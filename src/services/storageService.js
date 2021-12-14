@@ -1,4 +1,4 @@
-import { TOKEN_KEY, USER_KEY } from '../config'
+import { TOKEN_KEY, USER_KEY, REFRESH_TOKEN_KEY } from '../config'
 export class AppStorage {
   constructor(storage) {
     this.storage = storage || window.localStorage
@@ -51,6 +51,13 @@ const tokenService = {
     appStorage.removeItem(TOKEN_KEY)
   },
 
+  saveRefreshToken(refreshToken) {
+    appLocalStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
+  },
+
+  removeRefreshToken(refreshToken) {
+    appLocalStorage.removeItem(REFRESH_TOKEN_KEY)
+  },  
 }
 
 const userInfoService = {

@@ -4,6 +4,7 @@ export const BASE_URL = `${apiBaseUrl}/api`
 export const IMAGE_BASE_URL = `${apiBaseUrl}/api/uploads`
 
 export const TOKEN_KEY = 'access_token'
+export const REFRESH_TOKEN_KEY = 'refresh_token'
 export const USER_KEY = '_u_k'
 
 export const APIS = {
@@ -27,7 +28,17 @@ export const APIS = {
       method: 'GET'
     },
     post: {
-      url: 'sellers',
+      url: 'auth/seller/register',
+      method: 'POST'
+    },
+  },
+  admin: {
+    get: {
+      url: 'admins',
+      method: 'GET'
+    },
+    post: {
+      url: 'auth/admin/Register',
       method: 'POST'
     },
   },
@@ -37,7 +48,7 @@ export const APIS = {
       method: 'GET'
     },
     post: {
-      url: 'buyers',
+      url: 'auth/register',
       method: 'POST'
     },
   },
@@ -47,4 +58,45 @@ export const APIS = {
       method: 'GET'
     }
   },
+}
+
+export const routes = [
+  {
+    id: 0,
+    name: 'Add admin',
+    path: '/store/add-admin',
+    roles: ['admin']
+  }, {
+    id: 1,
+    name: 'Products',
+    path: '/store/products',
+    roles: ['buyer', 'admin', 'seller']
+  },
+  {
+    id: 2,
+    name: 'sellers',
+    path: '/store/sellers',
+    roles: ['buyer', 'admin']
+  },
+]
+
+
+export const routeAccess = {
+  admin: [
+    'add-admin',
+    'login',
+    'products',
+    'sellers'
+  ],
+  buyer: [
+    'dashboard',
+    'login',
+    'products',
+    'sellers'
+  ],
+  seller: [
+    'dashboard',
+    'login',
+    'products'
+  ],
 }

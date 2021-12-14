@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import user from './user'
 import orders from './order'
+import sellers from './seller'
 import cart, * as fromCart from './cart'
 import products, * as fromProducts from './product'
 
@@ -8,7 +9,8 @@ export default combineReducers({
     user,
     products,
     cart,
-    orders
+    orders,
+    sellers,
 })
 
 const getAddedIds = state => fromCart.getAddedIds(state.cart)
@@ -27,4 +29,4 @@ export const getCartProducts = state =>
   getAddedIds(state).map(id => ({
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
-  }))
+}))

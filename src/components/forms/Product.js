@@ -124,7 +124,10 @@ const Product = ({ onSubmit }) => {
 Product.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
-    quantity: PropTypes.number
+    quantity: PropTypes.number,
+    contentType: PropTypes.string,
+    image: PropTypes.string,
+    file: PropTypes.object,
 }
 
 export default Product

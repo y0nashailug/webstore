@@ -79,6 +79,17 @@ export const addSeller = (seller) => async dispatch => {
     })
 }
 
+export const addAdmin = (seller) => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.admin.post,
+        data: seller
+    })
+    dispatch({
+        type: types.ADD_SELLER,
+        payload: data,
+    })
+}
+
 export const addBuyer = (buyer) => async dispatch => {
     const { data } = await apiRequest.request({
         ...APIS.buyers.post,
@@ -92,13 +103,29 @@ export const addBuyer = (buyer) => async dispatch => {
 
 
 export const getAllSellers = () => async dispatch => {
-    const { data } = await apiRequest.request({
-        ...APIS.sellers.get,
-        data: {}
-    })
+    // const { data } = await apiRequest.request({
+    //     ...APIS.sellers.get,
+    //     data: {}
+    // })
+    //FIXME: - 
     dispatch({
         type: types.GET_SELLERS,
-        payload: data
+        payload: [
+            {
+                id: 1,
+                name: "Alex",
+                username: "alexi",
+                email: "alex@gmail.com",
+                isFollowing: true
+            },
+            {
+                id: 2,
+                name: "James",
+                username: "james",
+                email: "james@gmail.com",
+                isFollowing: false
+            }
+        ]
     })
 }
 

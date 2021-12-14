@@ -7,10 +7,13 @@ const Buyer = ({ onSubmit }) => {
 
     const form = {
         name: '',
-        username: ''
+        username: '',
+        email: '',
+        password: ''
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         if (isValidDTO()) {
             onSubmit(form)
         }
@@ -18,7 +21,9 @@ const Buyer = ({ onSubmit }) => {
 
     const isValidDTO = () => {
         return isRequired(form.username) &&
-        isRequired(form.name)
+        isRequired(form.name) &&
+        isRequired(form.email) &&
+        isRequired(form.password)
     }
 
     const setFieldValue = (type, value) => {
@@ -26,25 +31,45 @@ const Buyer = ({ onSubmit }) => {
     }
 
     return (
-        <div className="w-75">
-            <div className="flex items-center">
-                <div className="formField">
-                    <label className="formFieldLabel" htmlFor="username">Username</label>
-                    <div className="relative">
-                        <Input name="username" onBlur={(val) => setFieldValue('username', val)} />
+        <div className="" style={{ width: '24rem' }}>
+            <form autoComplete="off" onSubmit={handleSubmit}>
+                <div className="flex flex-col m-auto">
+                    <div className="formField">
+                        <label className="formFieldLabel" htmlFor="username">Username</label>
+                        <div className="relative">
+                            <Input name="username" onBlur={(val) => setFieldValue('username', val)} />
+                        </div>
+                        <div className="formFieldTip"></div>
                     </div>
-                    <div className="formFieldTip"></div>
-                </div>
 
-                <div className="formField">
-                    <label className="formFieldLabel" htmlFor="username">Name</label>
-                    <div className="relative">
-                        <Input name="name" onBlur={(val) => setFieldValue('name', val)} />
+                    <div className="formField">
+                        <label className="formFieldLabel" htmlFor="username">Name</label>
+                        <div className="relative">
+                            <Input name="name" onBlur={(val) => setFieldValue('name', val)} />
+                        </div>
+                        <div className="formFieldTip"></div>
                     </div>
-                    <div className="formFieldTip"></div>
+
+
+                    <div className="formField">
+                        <label className="formFieldLabel" htmlFor="email">Email</label>
+                        <div className="relative">
+                            <Input name="email" onBlur={(val) => setFieldValue('email', val)} />
+                        </div>
+                        <div className="formFieldTip"></div>
+                    </div>
+
+                    <div className="formField">
+                        <label className="formFieldLabel" htmlFor="password">Password</label>
+                        <div className="relative">
+                            <Input name="password" type="password" onBlur={(val) => setFieldValue('password', val)} />
+                        </div>
+                        <div className="formFieldTip"></div>
+                    </div>
+
+                    <Button type="submit" className="mt-4">Add</Button>
                 </div>
-                <Button onClick={handleSubmit} disabled={isValidDTO()}>Add</Button>
-            </div>
+            </form>
         </div>
     )
 }
@@ -52,7 +77,9 @@ const Buyer = ({ onSubmit }) => {
 Buyer.propTypes = {
     form: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired
+        username: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
     })
 }
 

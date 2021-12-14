@@ -3,7 +3,7 @@ import Button from '../shared/Button/Button'
 import Input from '../shared/Input/Input'
 import { isRequired } from '../../utils'
 
-const Seller = ({ onSubmit }) => {
+const Admin = ({ onSubmit }) => {
 
     const form = {
         name: '',
@@ -74,7 +74,7 @@ const Seller = ({ onSubmit }) => {
     )
 }
 
-Seller.propTypes = {
+Admin.propTypes = {
     form: PropTypes.shape({
         name: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
@@ -83,4 +83,4 @@ Seller.propTypes = {
     })
 }
 
-export default Seller
+export default Admin

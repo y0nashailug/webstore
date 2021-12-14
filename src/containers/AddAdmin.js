@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
-import { addSeller } from '../actions'
+import { addAdmin } from '../actions'
 import { useNavigate } from 'react-router-dom'
 
-import Seller from '../components/forms/Seller'
+import Admin from '../components/forms/Admin'
 
-const AddSeller = ({ dispatch }) => {
+const AddAdmin = ({ dispatch }) => {
 
     const navigate = useNavigate()
     const handleSubmit =  async seller => {
-        await dispatch(addSeller(seller))
+        await dispatch(addAdmin(seller))
         navigate('/store/sellers')
     }
 
@@ -20,10 +20,10 @@ const AddSeller = ({ dispatch }) => {
                 </div>
             </div>
             <div className="md:w-9/12 lg:w-6/12 justify-center flex">
-                <Seller onSubmit={handleSubmit} />
+                <Admin onSubmit={handleSubmit} />
             </div>
         </div>
     )
 }
 
-export default connect()(AddSeller)
+export default connect()(AddAdmin)

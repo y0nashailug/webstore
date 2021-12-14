@@ -9,6 +9,7 @@ const userReducer = (state = initialState, action) => {
             return Object.assign({}, state, action.payload)
         case USER_LOGGED_LOGOUT:
             tokenService.removeToken();
+            tokenService.removeRefreshToken();
             userInfoService.removeUser()
             apiService.removeHeader()
             return {};

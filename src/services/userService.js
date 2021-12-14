@@ -13,12 +13,12 @@ const userService = {
     try {
       const { data } = await apiService.customRequest(requestData)
 
-      tokenService.saveToken(data.jwt)
+      tokenService.saveToken(data.accessToken)
+      tokenService.saveRefreshToken(data.refreshToken)
       apiService.setHeader()
       userInfoService.saveUser(data.user || {})
 
       return {
-        token: data.jwt,
         user: data.user,
       };
     } catch (error) {
