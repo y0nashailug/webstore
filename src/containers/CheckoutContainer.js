@@ -1,15 +1,20 @@
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
 import Checkout from '../components/forms/Checkout'
 import Cart from '../components/Cart'
-import { getTotal, getCartProducts } from '../store/reducers'
+import { getTotal, getCartProducts, getCartForOrder } from '../store/reducers'
+import { addOrder } from '../actions'
 
-const CheckoutContainer = ({ products, total }) => {
+const CheckoutContainer = ({ products, total, dispatch, productIdWithQuantity }) => {
 
-    const handleSubmit = (data) => {
-        console.log(data)
+    const navigate = useNavigate()
+    const handleSubmit = async(data) => {
+        await dispatch(addOrder({ orderItems: productIdWithQuantity, ...data }))
+        navigate("/store/orders")
     }
+
     return (
         <div className="flex flex-wrap justify-center my-16 px-8">
             <div className="md:w-9/12 lg:w-6/12">
@@ -41,7 +46,8 @@ CheckoutContainer.propTypes = {
   
 const mapStateToProps = (state) => ({
     products: getCartProducts(state),
-    total: getTotal(state)
+    total: getTotal(state),
+    productIdWithQuantity: getCartForOrder(state)
 })
 
 export default connect(mapStateToProps)(CheckoutContainer)

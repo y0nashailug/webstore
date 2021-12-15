@@ -6,16 +6,22 @@ const OrderItem = ({ order }) => {
 
     return (
         <Order
-            name={order.name}
-            total={order.total}
+            quantity={order.quantity}
+            status={order.status}
+            product={order.product}
         />
     )
 }
 
 OrderItem.propTypes = {
   order: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    total: PropTypes.number.isRequired,
+    status: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    product: PropTypes.shape({
+      price: PropTypes.number,
+      quantity: PropTypes.number,
+      name: PropTypes.string
+    }).isRequired,
   }).isRequired
 }
 

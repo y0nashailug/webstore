@@ -58,7 +58,7 @@ export const loginAction = (userInfo) => async dispatch => {
 }
 
 export const addProduct = (product) => async dispatch => {
-    const { data } = await apiRequest.upload({
+    const { data } = await apiRequest.request({
         ...APIS.products.post,
         data: product
     })
@@ -101,31 +101,38 @@ export const addBuyer = (buyer) => async dispatch => {
     })
 }
 
+export const addOrder = (order) => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.orders.post,
+        data: order
+    })
+    dispatch({
+        type: types.ADD_ORDER,
+        payload: data,
+    })
+}
+
 
 export const getAllSellers = () => async dispatch => {
-    // const { data } = await apiRequest.request({
-    //     ...APIS.sellers.get,
-    //     data: {}
-    // })
-    //FIXME: - 
+    const { data } = await apiRequest.request({
+        ...APIS.sellers.get,
+        data: {}
+    })
     dispatch({
         type: types.GET_SELLERS,
-        payload: [
-            {
-                id: 1,
-                name: "Alex",
-                username: "alexi",
-                email: "alex@gmail.com",
-                isFollowing: true
-            },
-            {
-                id: 2,
-                name: "James",
-                username: "james",
-                email: "james@gmail.com",
-                isFollowing: false
-            }
-        ]
+        payload: data
+    })
+}
+
+
+export const getFollowingSellers = () => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.buyers.followingGet,
+        data: {}
+    })
+    dispatch({
+        type: types.GET_SELLERS,
+        payload: data
     })
 }
 
@@ -148,5 +155,20 @@ export const getAllOrders = () => async dispatch => {
     dispatch({
         type: types.GET_ORDERS,
         payload: data
+    })
+}
+
+export const addFollow = (data) => async dispatch => {
+    await apiRequest.request({
+        ...APIS.buyers.addFollow,
+        data,
+    })
+}
+
+
+export const unFollow = (data) => async dispatch => {
+    await apiRequest.request({
+        ...APIS.buyers.unFollow,
+        data,
     })
 }

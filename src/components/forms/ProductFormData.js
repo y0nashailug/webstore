@@ -1,34 +1,68 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { isRequired } from '../../utils'
 import Input from '../shared/Input/Input'
 import Button from '../shared/Button/Button'
+import { useRef } from 'react'
 
 const Product = ({ onSubmit }) => {
 
-    const form = {
+    const ref = useRef()
+    const [file, setFile] = useState()
+    const [filename, setFilename] = useState('')
+    const [fileType, setFileType] = useState('')
+    const [form, setForm] = useState({
         name: '',
         price: '',
         quantity: '',
-        category: '',
-        description: '',
-        imageUrl: '',
-    }
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (isValidDTO()) {
-            onSubmit(form)
+            const formData = new FormData()
+            formData.append('name', form.name)
+            formData.append('contentType', fileType)
+            formData.append('price', form.price)
+            formData.append('image', filename)
+            formData.append('quantity', form.quantity)
+            formData.append('file', file)
+            onSubmit(formData)
         }
     }
 
     const isValidDTO = () => {
         return isRequired(form.name) &&
         isRequired(form.price) &&
-        isRequired(form.quantity)
+        isRequired(form.quantity) &&
+        isRequired(fileType) &&
+        isRequired(filename)
     }
 
     const setFieldValue = (type, value) => {
-        form[type] = value
+        setForm({
+            ...form,
+            [type]: value
+        })
+    }
+
+    const setBrowse = (e) => {
+        e.preventDefault()
+        ref.current.click()
+    }
+
+    const setImage = (e) => {
+        e.preventDefault()
+        const file = e.target.files[0]
+        const types = ['png', 'jpg', 'jpeg']
+        types.forEach(item => {
+          if (file.type && file.type.includes(item)) {
+            setFileType(item)
+            return
+          }
+        })
+        setFilename(file.name)
+        setFile(file)
     }
 
     return (
@@ -60,20 +94,26 @@ const Product = ({ onSubmit }) => {
                     </div>
 
                     <div className="formField">
-                        <label className="formFieldLabel" htmlFor="description">Description</label>
+                        <label className="formFieldLabel" htmlFor="name">Product image</label>
                         <div className="relative">
-                            <Input name="description" onBlur={(val) => setFieldValue('description', val)} />
+                        <input
+                            ref={ref}
+                            type="file"
+                            name="image"
+                            className="custom-file-input"
+                            style={{
+                                visibilty: 'hidden',
+                                opacity: 0,
+                                height: 0,
+                                width: 0
+                            }}
+                            onChange={setImage}
+                        />
+                        <Button variant="primary" icon="attachment" onClick={setBrowse}>Browse...</Button>
                         </div>
-                        <div className="formFieldTip"></div>
+                        <div className="formFieldTip">{ filename }</div>
                     </div>
 
-                    <div className="formField">
-                        <label className="formFieldLabel" htmlFor="category">Category</label>
-                        <div className="relative">
-                            <Input name="category" onBlur={(val) => setFieldValue('category', val)} />
-                        </div>
-                        <div className="formFieldTip"></div>
-                    </div>
                     <Button type="type" className="mt-4">Add</Button>
                 </div>
             </form>
@@ -85,6 +125,9 @@ Product.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
     quantity: PropTypes.number,
+    contentType: PropTypes.string,
+    image: PropTypes.string,
+    file: PropTypes.object,
 }
 
 export default Product

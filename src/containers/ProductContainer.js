@@ -21,14 +21,14 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
         <div className="md:w-9/12 lg:w-9/12">
           <ProductList>
             <div className="flex flex-wrap">
-              {products.map((product) => (
+              {products.length ? products.map((product) => (
                   <ProductItem
                     product={product}
                     onAddToCart={() => addToCart(product.id)}
                     key={product.id}
                     className="px-4 py-2 flex items-center mb-4"
                   />
-              ))}
+              )): <div className="text-center w-full text-15">No product to show</div>}
             </div>
           </ProductList>
         </div>

@@ -4,13 +4,23 @@ import { isRequired } from '../../utils'
 
 const Checkout = ({ onSubmit }) => {
     const form = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        state: '',
-        city: '',
-        address: '',
-        zip: ''
+        shippingAddress: {
+            state: '',
+            city: '',
+            street: '',
+            zip: '',
+        },
+        billingAddress: {
+            state: '',
+            city: '',
+            street: '',
+            zip: '',
+        },
+        // paymentMethod: {
+        //     cardNumber: '',
+        //     expireDate: '',
+        //     cvv: ''
+        // } 
     }
 
     const handleSubmit = (e) => {
@@ -21,8 +31,12 @@ const Checkout = ({ onSubmit }) => {
     }
 
     const isValidDTO = () => {
-        return isRequired(form.username) &&
-        isRequired(form.name)
+        return isRequired(form.shippingAddress.street) &&
+        isRequired(form.billingAddress.street)
+    }
+
+    const setFieldValueWithKey = (key, type, value) => {
+        form[key][type] = value
     }
 
     const setFieldValue = (type, value) => {
@@ -31,68 +45,102 @@ const Checkout = ({ onSubmit }) => {
 
     return (
         <div>
-            <div>Billing details</div>
+            <div className="text-13">Billing address</div>
             <div className="flex flex-col" style={{ width: '24rem' }}>
                 <div className="formField">
-                    <label className="formFieldLabel" htmlFor="firstName">First name</label>
+                    <label className="formFieldLabel" htmlFor="street">Street</label>
                     <div className="relative">
-                        <Input name="firstName" onBlur={(val) => setFieldValue('firstName', val)} />
+                        <Input name="street" onBlur={(val) => setFieldValueWithKey('billingAddress', 'street', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
-                <div className="formField">
-                    <label className="formFieldLabel" htmlFor="lastName">Last name</label>
-                    <div className="relative">
-                        <Input name="lastName" onBlur={(val) => setFieldValue('lastName', val)} />
-                    </div>
-                    <div className="formFieldTip"></div>
-                </div>
-                <div className="formField">
-                    <label className="formFieldLabel" htmlFor="email">Email</label>
-                    <div className="relative">
-                        <Input name="email" onBlur={(val) => setFieldValue('email', val)} />
-                    </div>
-                    <div className="formFieldTip"></div>
-                </div>
-                <div className="formField">
-                    <label className="formFieldLabel" htmlFor="state">State</label>
-                    <div className="relative">
-                        <Input name="state" onBlur={(val) => setFieldValue('state', val)} />
-                    </div>
-                    <div className="formFieldTip"></div>
-                </div>
+
                 <div className="formField">
                     <label className="formFieldLabel" htmlFor="city">City</label>
                     <div className="relative">
-                        <Input name="city" onBlur={(val) => setFieldValue('city', val)} />
+                        <Input name="city" onBlur={(val) => setFieldValueWithKey('billingAddress', 'city', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
+
                 <div className="formField">
-                    <label className="formFieldLabel" htmlFor="address">Address</label>
+                    <label className="formFieldLabel" htmlFor="state">State</label>
                     <div className="relative">
-                        <Input name="address" onBlur={(val) => setFieldValue('address', val)} />
+                        <Input name="state" onBlur={(val) => setFieldValueWithKey('billingAddress', 'state', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
                 <div className="formField">
                     <label className="formFieldLabel" htmlFor="zip">Zip</label>
                     <div className="relative">
-                        <Input name="zip" onBlur={(val) => setFieldValue('zip', val)} />
+                        <Input name="zip" onBlur={(val) => setFieldValueWithKey('billingAddress', 'zip', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
             </div>
-            <div className="flex items-center">
+
+            <div className="mt-4 text-13">Shipping address</div>
+            <div className="flex flex-col" style={{ width: '24rem' }}>
+
                 <div className="formField">
-                    Shipping method
+                    <label className="formFieldLabel" htmlFor="street">Street</label>
+                    <div className="relative">
+                        <Input name="street" onBlur={(val) => setFieldValueWithKey('shippingAddress', 'street', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
+                </div>
+
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="city">City</label>
+                    <div className="relative">
+                        <Input name="city" onBlur={(val) => setFieldValueWithKey('shippingAddress', 'city', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
+                </div>
+
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="state">State</label>
+                    <div className="relative">
+                        <Input name="state" onBlur={(val) => setFieldValueWithKey('shippingAddress', 'state', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
+                </div>
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="zip">Zip</label>
+                    <div className="relative">
+                        <Input name="zip" onBlur={(val) => setFieldValueWithKey('shippingAddress', 'zip', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
                 </div>
             </div>
-            <div className="flex items-center">
+
+            {/* <div className="mt-4 text-13">Payment method</div>
+            <div className="flex flex-col" style={{ width: '24rem' }}>
+
                 <div className="formField">
-                    Payment method
+                    <label className="formFieldLabel" htmlFor="street">Card number</label>
+                    <div className="relative">
+                        <Input name="cardNumber" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'cardNumber', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
                 </div>
-            </div>
+
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="expireDate">Expire date</label>
+                    <div className="relative">
+                        <Input name="expireDate" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'expireDate', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
+                </div>
+
+                <div className="formField">
+                    <label className="formFieldLabel" htmlFor="state">CVV</label>
+                    <div className="relative">
+                        <Input name="cvv" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'cvv', val)} />
+                    </div>
+                    <div className="formFieldTip"></div>
+                </div>
+            </div> */}
             <Button className="my-4" onClick={handleSubmit} disabled={isValidDTO()}>Place your order</Button>
         </div>
     )

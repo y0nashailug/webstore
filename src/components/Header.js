@@ -31,8 +31,9 @@ const Header = ({ user, onClick, dispatch }) => {
         if (userFetch) {
             const filtered = routes.filter(route => {
                 if (route.roles.includes(user.roles[0].toLowerCase())) {
-                  const metaName = route.path.split('/').slice(-1)[0]
-                  return routeAccess[user.roles[0].toLowerCase()].includes(metaName)
+                //   const metaName = route.path.split('/').slice(-1)[0]
+                //   return routeAccess[user.roles[0].toLowerCase()].includes(metaName)
+                    return true
                 }
                 return false
             })

@@ -30,3 +30,5 @@ export const getCartProducts = state =>
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
 }))
+
+export const getCartForOrder = state => getAddedIds(state).map(id => ({ productId: id, quantity: getQuantity(state, id) }))

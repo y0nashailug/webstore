@@ -24,7 +24,7 @@ export const APIS = {
   },
   sellers: {
     get: {
-      url: 'sellers',
+      url: 'user/regulate/sellers',
       method: 'GET'
     },
     post: {
@@ -38,7 +38,7 @@ export const APIS = {
       method: 'GET'
     },
     post: {
-      url: 'auth/admin/Register',
+      url: 'api/user/regulate/admin/register',
       method: 'POST'
     },
   },
@@ -51,11 +51,27 @@ export const APIS = {
       url: 'auth/register',
       method: 'POST'
     },
+    followingGet: {
+      url: 'following',
+      method: 'GET'
+    },
+    addFollow: {
+      url: 'following',
+      method: 'POST'
+    },
+    unFollow: {
+      url: 'following/unfollow',
+      method: 'POST'
+    }
   },
   orders: {
     get: {
       url: 'orders',
       method: 'GET'
+    },
+    post: {
+      url: 'orders',
+      method: 'post'
     }
   },
 }
@@ -65,38 +81,32 @@ export const routes = [
     id: 0,
     name: 'Add admin',
     path: '/store/add-admin',
-    roles: ['admin']
+    roles: ['role_admin']
   }, {
     id: 1,
     name: 'Products',
     path: '/store/products',
-    roles: ['buyer', 'admin', 'seller']
+    roles: ['role_buyer', 'role_admin', 'role_seller']
+  }, {
+    id: 2,
+    name: 'Sellers',
+    path: '/store/sellers',
+    roles: ['role_buyer', 'role_admin']
+  }, {
+    id: 3,
+    name: 'Add product',
+    path: '/store/add-product',
+    roles: ['role_seller']
+  }, {
+    id: 4,
+    name: 'Following',
+    path: '/store/following',
+    roles: ['role_buyer']
   },
   {
-    id: 2,
-    name: 'sellers',
-    path: '/store/sellers',
-    roles: ['buyer', 'admin']
+    id: 5,
+    name: 'Orders',
+    path: '/store/orders',
+    roles: ['role_buyer']
   },
 ]
-
-
-export const routeAccess = {
-  admin: [
-    'add-admin',
-    'login',
-    'products',
-    'sellers'
-  ],
-  buyer: [
-    'dashboard',
-    'login',
-    'products',
-    'sellers'
-  ],
-  seller: [
-    'dashboard',
-    'login',
-    'products'
-  ],
-}
