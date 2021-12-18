@@ -28,20 +28,16 @@ const routes = (loggedIn) => [
       { path: 'orders', element: <OrderContainer /> },
       { path: 'carts', element: <CartContainer /> },
       { path: 'following', element: <FollowingSellerContainer /> },
-      { path: 'add-buyer', element: <AddBuyer /> },
-      { path: 'add-seller', element: <AddSeller /> },
       { path: 'add-product', element: <AddProduct /> },
       { path: 'add-admin', element: <AddAdmin /> },
       { path: 'products/:id', element: <ProductView /> },
       { path: '', element: <Navigate to="/store/products" /> }
     ],
-  }, {
-    path: '/login',
-    element: <Login />
-  }, {
-    path: '',
-    element: loggedIn ? <Navigate to="/store" />: <Navigate to="/login" />,
-  }
+  }, 
+  { path: '/login', element: <Login /> }, 
+  { path: '', element: loggedIn ? <Navigate to="/store" />: <Navigate to="/login" /> }, 
+  { path: '/add-buyer', element: <AddBuyer /> },
+  { path: '/add-seller', element: <AddSeller /> },
 ]
 
 export default routes

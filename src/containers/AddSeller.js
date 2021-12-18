@@ -16,7 +16,7 @@ const AddSeller = ({ dispatch }) => {
         <div className="flex flex-col items-center my-16 px-8">
             <div className="w-full md:w-9/12 lg:w-9/12">
                 <div className="flex items-center justify-center text-center">
-                <span className="pl-2 text-xl mb-4">Add new seller</span>
+                <span className="pl-2 text-xl mb-4">Register as seller</span>
                 </div>
             </div>
             <div className="md:w-9/12 lg:w-6/12 justify-center flex">

@@ -67,7 +67,11 @@ const Login = ({ dispatch }) => {
 
                   <div className="modal-footer mt-4">
                     <div className="text-center">
-                        <Button className="w-full" type="submit" isWorking={isWorking}>Login</Button>
+                      <Button className="w-full" type="submit" isWorking={isWorking}>Login</Button>
+                    </div>
+                    <div className="mt-4">
+                      <Button className="w-full mb-4" variant="empty" onClick={() => navigate("/add-buyer")}>Register as Buyer</Button>
+                      <Button className="w-full" variant="empty" onClick={() => navigate("/add-seller")}>Register as Seller</Button>
                     </div>
                   </div>
                 </div>
