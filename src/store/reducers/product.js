@@ -1,8 +1,9 @@
-import { GET_PRODUCTS, ADD_PRODUCT } from "../../constants"
+import { GET_PRODUCTS, ADD_PRODUCT, GET_PRODUCT } from "../../constants"
 
 const initialState = {
     loading: true,
-    products: []
+    products: [],
+    product: {}
 }
 
 const products = (state = initialState, action) => {
@@ -11,6 +12,12 @@ const products = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload,
+                loading: false
+            }
+        case GET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload,
                 loading: false
             }
         case ADD_PRODUCT:

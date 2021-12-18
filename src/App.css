@@ -150,6 +150,43 @@
   min-width: 240px;
 }
 
+.cart-min {
+  min-width: 160px;
+}
+
+.textarea {
+  padding: 7px 7px 8px;
+  line-height: 1.28;
+  resize: vertical;
+  box-shadow: transparent 0px 0px 0px 1px;
+  transition: background 0.1s ease 0s;
+  overflow: auto;
+  overflow-y: hidden;
+  width: 100%;
+  border-radius: 3px;
+  appearance: none;
+  outline: none;
+}
+.textarea {
+  border: 1px solid #ddd;
+  background: #F4F5F7;
+}
+.textarea:hover:not(:focus) {
+  background: #F4F5F7;
+}
+.textarea:focus {
+  border: 1px solid #1b1f3c;
+  box-shadow: 0 0 0 1px #1b1f3c;
+  background: white;
+}
+.fakeTa {
+  color: rgb(137, 147, 164);
+  border: 1px solid rgb(223, 225, 230);
+  cursor: text;
+  user-select: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

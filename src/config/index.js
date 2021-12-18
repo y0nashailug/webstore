@@ -21,6 +21,10 @@ export const APIS = {
       url: 'products',
       method: 'POST'
     },
+    getById: (id) => ({
+      url: `products/${id}`,
+      method: 'GET'
+    })
   },
   sellers: {
     get: {
@@ -71,8 +75,30 @@ export const APIS = {
     },
     post: {
       url: 'orders',
-      method: 'post'
-    }
+      method: 'POST'
+    },
+    cancelOrder: (id) => ({
+      url: `orders/${id}/cancel`,
+      method: 'POST'
+    }),
+    changeOrderStatus: (id) => ({
+      url: `orders/${id}/status`,
+      method: 'POST'
+    }),
+  },
+  reviews: {
+    get: {
+      url: 'reviews',
+      method: 'GET'
+    },
+    post: {
+      url: 'reviews',
+      method: 'POST'
+    },
+    addReview: (id) => ({
+      url: `products/${id}/reviews`,
+      method: 'POST'
+    })
   },
 }
 
@@ -107,6 +133,6 @@ export const routes = [
     id: 5,
     name: 'Orders',
     path: '/store/orders',
-    roles: ['role_buyer']
-  },
+    roles: ['role_buyer', 'role_seller']
+  }
 ]

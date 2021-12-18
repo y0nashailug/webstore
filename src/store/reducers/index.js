@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import user from './user'
 import orders from './order'
 import sellers from './seller'
+import reviews from './review'
 import cart, * as fromCart from './cart'
 import products, * as fromProducts from './product'
 
@@ -11,6 +12,7 @@ export default combineReducers({
     cart,
     orders,
     sellers,
+    reviews,
 })
 
 const getAddedIds = state => fromCart.getAddedIds(state.cart)

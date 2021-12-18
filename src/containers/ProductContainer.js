@@ -6,10 +6,16 @@ import { getAllProducts, addToCart } from "../actions"
 import ProductList from "../components/ProductList"
 import ProductItem from "../components/ProductItem"
 import Icon from '../components/shared/Icon/Icon'
+import { useNavigate } from "react-router-dom"
 
 const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
   
   useEffect(() => getAllProducts(), [])
+  const navigate = useNavigate()
+  const handleNavigate = (id) => {
+    navigate(`/store/products/${id}`)
+  }
+
   return (
     <div className="flex flex-col items-center my-16 px-8">
       <div className="w-full md:w-9/12 lg:w-9/12">
@@ -21,13 +27,16 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
         <div className="md:w-9/12 lg:w-9/12">
           <ProductList>
             <div className="flex flex-wrap">
-              {products.length ? products.map((product) => (
+              {products.length ? products.map((product, i) => (
+                <div onClick={() => handleNavigate(product.id) }
+                  key={i}
+                  className="cursor-pointer">
                   <ProductItem
                     product={product}
                     onAddToCart={() => addToCart(product.id)}
-                    key={product.id}
                     className="px-4 py-2 flex items-center mb-4"
                   />
+                </div>
               )): <div className="text-center w-full text-15">No product to show</div>}
             </div>
           </ProductList>

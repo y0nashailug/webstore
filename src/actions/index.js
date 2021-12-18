@@ -22,6 +22,17 @@ export const getAllProducts = () => async dispatch => {
     dispatch(getProducts(data))
 }
 
+export const getProductById = (id) => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.products.getById(id),
+        data: {}
+    })
+    dispatch({
+        type: types.GET_PRODUCT,
+        payload: data
+    })
+}
+
 export const getUser = () => async dispatch => {
     const user = userInfoService.getUser()
     if (user && Object.keys(user).length) {
@@ -112,6 +123,17 @@ export const addOrder = (order) => async dispatch => {
     })
 }
 
+export const addReview = (id, review) => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.reviews.addReview(id),
+        data: review
+    })
+    dispatch({
+        type: types.ADD_REVIEW,
+        payload: data,
+    })
+}
+
 
 export const getAllSellers = () => async dispatch => {
     const { data } = await apiRequest.request({
@@ -170,5 +192,19 @@ export const unFollow = (data) => async dispatch => {
     await apiRequest.request({
         ...APIS.buyers.unFollow,
         data,
+    })
+}
+
+export const cancelOrder = async(id) => {
+    return await apiRequest.request({
+        ...APIS.orders.cancelOrder(id),
+        data: {}
+    })
+}
+
+export const changeOrderStatus = async(id, data) => {
+    return await apiRequest.request({
+        ...APIS.orders.changeOrderStatus(id),
+        data
     })
 }

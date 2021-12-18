@@ -12,6 +12,7 @@ import AddSeller from '../containers/AddSeller'
 import AddProduct from '../containers/AddProduct'
 import AddAdmin from '../containers/AddAdmin'
 import Layout from '../containers/Layout'
+import ProductView from '../containers/ProductView'
 
 const routes = (loggedIn) => [
   {
@@ -29,11 +30,15 @@ const routes = (loggedIn) => [
       { path: 'add-seller', element: <AddSeller /> },
       { path: 'add-product', element: <AddProduct /> },
       { path: 'add-admin', element: <AddAdmin /> },
+      { path: 'products/:id', element: <ProductView /> },
       { path: '', element: <Navigate to="/store/products" /> }
     ],
   }, {
     path: '/login',
     element: <Login />
+  }, {
+    path: '',
+    element: loggedIn ? <Navigate to="/store" />: <Navigate to="/login" />,
   }
 ]
 

@@ -16,6 +16,7 @@ const CartFixed = ({ products, total, checkout }) => {
         setToggle(!toggle)
     }
     const handleNavigate = () => {
+        setToggle(false)
         navigate('/store/checkout')
     }
 
@@ -26,12 +27,16 @@ const CartFixed = ({ products, total, checkout }) => {
                     <span className="px-1 text-primary">({products.length})</span>
                 </Button>
             </div>
-            {toggle ? <div className="cart-container absolute right-0 z-20 mt-2 px-4 py-2 bg-white rounded-lg drop-shadow-md">
+            {toggle ? <div>
+                <button className="fixed top-0 left-0 right-0 bottom-0 z-1 w-full"
+                         onClick={() => setToggle(false) }></button>
+                <div className="cart-container absolute right-0 z-20 mt-2 px-4 py-2 bg-white rounded-lg drop-shadow-md">
                 <Cart
                     products={products}
                     total={total}
                     hasButton={true}
                     onCheckoutClicked={handleNavigate} />
+                </div>
             </div>: null}
       </div>
     )

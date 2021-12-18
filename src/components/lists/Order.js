@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Order = ({ quantity, status, product }) => (
   <div className="flex">
-    <div className="mr-2"> {product.name} - &#36;{product.price} - {quantity} {status}</div>
+    <div className="mr-2"> {product.name} - &#36;{product.price} - {quantity}</div>
   </div>
 )
 

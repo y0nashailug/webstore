@@ -1,7 +1,7 @@
 import Button from './shared/Button/Button'
 import Macbook from '../assets/macbook.jpg'
 
-const ProductCard = ({ price, name, category, onAddToCart }) => {
+const ProductCard = ({ price, name, category, onAddToCart, description }) => {
 
     return (
         <div className="card-wrap">
