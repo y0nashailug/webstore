@@ -5,18 +5,21 @@ import * as dayjs from 'dayjs'
 
 import OrderList from '../components/lists/OrderList'
 import OrderItem from '../components/lists/OrderItem'
-import { getAllOrders, cancelOrder, changeOrderStatus } from '../actions'
+import { getAllOrders, cancelOrder, changeOrderStatus, getUser } from '../actions'
 import Icon from '../components/shared/Icon/Icon'
 import Button from '../components/shared/Button/Button'
 import Macbook from '../assets/macbook.jpg'
-import { userInfoService } from '../services/storageService'
+import { roles } from '../config'
 
-const OrderContainer = ({ orders, loading, getAllOrders }) => {
+const OrderContainer = ({ user, orders, loading, getAllOrders, getUser }) => {
 
-    const [toggleDropDownMenu, setToggleDropDownMenu] = useState(false)
+    const [toggleDropDownMenu, setToggleDropDownMenu] = useState('')
     const [statusUpdated, setStatusUpdated] = useState('')
 
     useEffect(() => getAllOrders(), [statusUpdated])
+    useEffect(() => {
+      getUser()
+    }, [])
 
     const handleCancelOrder = async(id) => {
       await cancelOrder(id)
@@ -24,7 +27,7 @@ const OrderContainer = ({ orders, loading, getAllOrders }) => {
     }
 
     const handleChangeOrderStatus = async(id, status) => {
-      setToggleDropDownMenu(false)
+      setToggleDropDownMenu('')
       await changeOrderStatus(id, { status })
       setStatusUpdated(status)
     }
@@ -49,18 +52,21 @@ const OrderContainer = ({ orders, loading, getAllOrders }) => {
                     </div>
 
                     <div className="flex ml-auto items-center">
-                      <Button variant="empty" icon="chevron-down" onClick={() => setToggleDropDownMenu(!toggleDropDownMenu) }>Change order status</Button>
+                      <Button variant="empty" icon="chevron-down" onClick={() => setToggleDropDownMenu(order.id) }>Change order status</Button>
                     </div>
-                    {toggleDropDownMenu ? 
+                    {toggleDropDownMenu === order.id ? 
                       <div>
                         <button className="fixed top-0 left-0 right-0 bottom-0 z-1 w-full"
-                         onClick={() => setToggleDropDownMenu(false) }></button>
-                        <div className="cart-container cart-min absolute right-0 z-20 mt-2 px-4 py-2 bg-white rounded-lg drop-shadow-md flex flex-col">
+                         onClick={() => setToggleDropDownMenu('') }></button>
+                        <div className="cart-container cart-min absolute right-0 z-20 mt-2 px-4 py-2 bg-white rounded-lg drop-shadow-md">
                             <Button variant="empty" onClick={() => handleCancelOrder(order.id)}>Cancel Order</Button>
-                            <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'ACCEPTED')}>Accept order</Button>
-                            <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'SHIPPED')}>Shipped</Button>
-                            <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'ONTHEWAY')}>On the way</Button>
-                            <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'DELIVERED')}>Delivered</Button>
+                            {user && user.roles[0].toLowerCase() === roles[1] ? 
+                              <div className="flex flex-col">
+                                  <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'ACCEPTED')}>Accept order</Button>
+                                  <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'SHIPPED')}>Shipped</Button>
+                                  <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'ONTHEWAY')}>On the way</Button>
+                                  <Button variant="empty" onClick={() => handleChangeOrderStatus(order.id, 'DELIVERED')}>Delivered</Button>
+                              </div>: null}
                         </div>
                       </div>
                      : null }
@@ -106,7 +112,8 @@ OrderContainer.propTypes = {
 
 const mapStateToProps = (state) => ({
     orders: state.orders.orders,
-    loading: state.orders.loading
+    loading: state.orders.loading,
+    user: state.user,
 })
 
-export default connect(mapStateToProps, { getAllOrders })(OrderContainer)
+export default connect(mapStateToProps, { getAllOrders, getUser })(OrderContainer)

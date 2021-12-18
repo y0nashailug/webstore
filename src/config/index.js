@@ -106,6 +106,8 @@ export const APIS = {
   },
 }
 
+export const roles = ['role_buyer', 'role_seller', 'role_admin']
+
 export const routes = [
   {
     id: 0,
