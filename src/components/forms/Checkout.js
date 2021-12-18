@@ -16,11 +16,11 @@ const Checkout = ({ onSubmit }) => {
             street: '',
             zip: '',
         },
-        // paymentMethod: {
-        //     cardNumber: '',
-        //     expireDate: '',
-        //     cvv: ''
-        // } 
+        payment: {
+            cardNumber: '',
+            expiration: '',
+            securityCode: ''
+        }
     }
 
     const handleSubmit = (e) => {
@@ -37,10 +37,6 @@ const Checkout = ({ onSubmit }) => {
 
     const setFieldValueWithKey = (key, type, value) => {
         form[key][type] = value
-    }
-
-    const setFieldValue = (type, value) => {
-        form[type] = value
     }
 
     return (
@@ -114,13 +110,13 @@ const Checkout = ({ onSubmit }) => {
                 </div>
             </div>
 
-            {/* <div className="mt-4 text-13">Payment method</div>
+            <div className="mt-4 text-13">Payment method</div>
             <div className="flex flex-col" style={{ width: '24rem' }}>
 
                 <div className="formField">
-                    <label className="formFieldLabel" htmlFor="street">Card number</label>
+                    <label className="formFieldLabel" htmlFor="cardNumber">Card number</label>
                     <div className="relative">
-                        <Input name="cardNumber" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'cardNumber', val)} />
+                        <Input name="cardNumber" onBlur={(val) => setFieldValueWithKey('payment', 'cardNumber', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
@@ -128,7 +124,7 @@ const Checkout = ({ onSubmit }) => {
                 <div className="formField">
                     <label className="formFieldLabel" htmlFor="expireDate">Expire date</label>
                     <div className="relative">
-                        <Input name="expireDate" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'expireDate', val)} />
+                        <Input name="expireDate" onBlur={(val) => setFieldValueWithKey('payment', 'expiration', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
@@ -136,11 +132,12 @@ const Checkout = ({ onSubmit }) => {
                 <div className="formField">
                     <label className="formFieldLabel" htmlFor="state">CVV</label>
                     <div className="relative">
-                        <Input name="cvv" onBlur={(val) => setFieldValueWithKey('paymentMethod', 'cvv', val)} />
+                        <Input name="cvv" onBlur={(val) => setFieldValueWithKey('payment', 'securityCode', val)} />
                     </div>
                     <div className="formFieldTip"></div>
                 </div>
-            </div> */}
+            </div>
+
             <Button className="my-4" onClick={handleSubmit} disabled={isValidDTO()}>Place your order</Button>
         </div>
     )

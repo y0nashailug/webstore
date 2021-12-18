@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Icon from '../Icon/Icon'
 import './Input.css'
 
-const Input = ({ className, icon, hasIcon, iconSize = 16, onBlur, type }) => {
+const Input = ({ className, icon, hasIcon, iconSize = 16, onBlur, onChange, type }) => {
 
     const iconStyles = {
         '--iconContainerWidth': `${iconSize * 2}px`
@@ -10,6 +10,10 @@ const Input = ({ className, icon, hasIcon, iconSize = 16, onBlur, type }) => {
 
     const handleOnBlur = (e) => {
         onBlur(e.target.value)
+    }
+
+    const handleOnChange = (e) => {
+        onChange(e.target.value)
     }
 
     return (
@@ -22,6 +26,7 @@ const Input = ({ className, icon, hasIcon, iconSize = 16, onBlur, type }) => {
             type={type ? type: 'text'}
             // onInput={(e) => onInput(e.target.value)}
             onBlur={handleOnBlur}
+            // onChange={handleOnChange}
         />
       </div>
     )
@@ -32,7 +37,8 @@ Input.propTypes = {
     className: PropTypes.string,
     hasIcon: PropTypes.bool,
     iconSize: PropTypes.number,
-    onBlur: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
     type: PropTypes.string
 }
 

@@ -22,6 +22,29 @@ export const getAllProducts = () => async dispatch => {
     dispatch(getProducts(data))
 }
 
+export const getAllReviews = () => async dispatch => {
+    const { data } = await apiRequest.request({
+        ...APIS.reviews.get,
+        data: {}
+    })
+    dispatch({
+        type: types.GET_REVIEWS,
+        payload: data
+    })
+}
+
+export const approveReview = (id) => async dispatch => {
+    console.log(id)
+    const { data } = await apiRequest.request({
+        ...APIS.reviews.put(id),
+        data: {}
+    })
+    // dispatch({
+    //     type: types.GET_REVIEWS,
+    //     payload: data
+    // })
+}
+
 export const getProductById = (id) => async dispatch => {
     const { data } = await apiRequest.request({
         ...APIS.products.getById(id),

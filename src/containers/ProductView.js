@@ -8,7 +8,6 @@ import Icon from '../components/shared/Icon/Icon'
 import ProductItemFull from '../components/lists/ProductItemFull'
 import Comment from '../components/Comment'
 
-
 const ProductView = ({ product, loading, getProductById }) => {
 
     const { id } = useParams()
@@ -24,10 +23,12 @@ const ProductView = ({ product, loading, getProductById }) => {
             </div>
            {!loading ? (
                 <div className="md:w-9/12 lg:w-9/12">
-                    <ProductItemFull
-                        product={product}
-                        className="px-4 py-2 flex items-center mb-4"
-                    />
+                    <div className="flex justify-center">
+                        <ProductItemFull
+                            product={product}
+                            className="px-4 py-2 flex items-center mb-4"
+                        />
+                    </div>
                     <Comment productId={id} isCreate={true} refetch={() => getProductById(id)} />
                     {product.reviews && product.reviews.map((review, i) => (
                         <Comment

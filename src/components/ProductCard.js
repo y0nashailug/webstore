@@ -1,12 +1,12 @@
 import Button from './shared/Button/Button'
 import Macbook from '../assets/macbook.jpg'
 
-const ProductCard = ({ price, name, category, onAddToCart, description }) => {
+const ProductCard = ({ price, name, category, onAddToCart, description, onView }) => {
 
     return (
         <div className="card-wrap">
             <div className="card">
-                <div className="mb-2">
+                <div className="mb-2" onClick={onView}>
                     <div style={{ 
                         background: `url(${Macbook})`,
                         backgroundSize: 'cover',

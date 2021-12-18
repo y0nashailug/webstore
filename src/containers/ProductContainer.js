@@ -28,12 +28,13 @@ const ProductContainer = ({ products, loading, getAllProducts, addToCart }) => {
           <ProductList>
             <div className="flex flex-wrap">
               {products.length ? products.map((product, i) => (
-                <div onClick={() => handleNavigate(product.id) }
+                <div
                   key={i}
                   className="cursor-pointer">
                   <ProductItem
                     product={product}
                     onAddToCart={() => addToCart(product.id)}
+                    onView={() => handleNavigate(product.id)}
                     className="px-4 py-2 flex items-center mb-4"
                   />
                 </div>

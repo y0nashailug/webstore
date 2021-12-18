@@ -95,6 +95,10 @@ export const APIS = {
       url: 'reviews',
       method: 'POST'
     },
+    put: (id) => ({
+      url: `reviews/${id}`,
+      method: 'PUT'
+    }),
     addReview: (id) => ({
       url: `products/${id}/reviews`,
       method: 'POST'
@@ -134,5 +138,11 @@ export const routes = [
     name: 'Orders',
     path: '/store/orders',
     roles: ['role_buyer', 'role_seller']
-  }
+  },
+  {
+    id: 6,
+    name: 'Reviews',
+    path: '/store/reviews',
+    roles: ['role_admin']
+  },
 ]

@@ -78,7 +78,7 @@ const Comment = ({ comment = {}, isCreate = false, dispatch, productId, refetch 
                 onClick={handleTextareaClicked}
               className="fakeTa pb-2 whitespace-pre-wrap"
             >
-              Add a comment...
+              Add a review...
             </p>: null}
             </div>}
           </div>

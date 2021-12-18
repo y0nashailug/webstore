@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProductCard from './ProductCard'
 
-const ProductItem = ({ product, onAddToCart, className }) => {
+const ProductItem = ({ product, onAddToCart, className, onView }) => {
 
     return (
       <div className={className}>
@@ -13,6 +13,7 @@ const ProductItem = ({ product, onAddToCart, className }) => {
                 quantity={product.quantity}
                 category={product.category}
                 onAddToCart={onAddToCart}
+                onView={onView}
             />
         </div>
       </div>

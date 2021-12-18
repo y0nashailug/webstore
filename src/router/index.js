@@ -13,6 +13,7 @@ import AddProduct from '../containers/AddProduct'
 import AddAdmin from '../containers/AddAdmin'
 import Layout from '../containers/Layout'
 import ProductView from '../containers/ProductView'
+import ReviewContainer from '../containers/ReviewContainer'
 
 const routes = (loggedIn) => [
   {
@@ -22,6 +23,7 @@ const routes = (loggedIn) => [
       { path: 'products', element: <ProductContainer /> },
       { path: 'checkout', element: <CheckoutContainer /> },
       { path: 'sellers', element: <SellerContainer /> },
+      { path: 'reviews', element: <ReviewContainer /> },
       { path: 'buyers', element: <BuyerContainer /> },
       { path: 'orders', element: <OrderContainer /> },
       { path: 'carts', element: <CartContainer /> },
