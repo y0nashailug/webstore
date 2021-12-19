@@ -1,8 +1,8 @@
 # Mini webstore project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was done as part of our WAA course project in Maharishi International University
 
-Simple web app created with Reactjs, Tailwind and Spring boot.[Webstore Backend](https://github.com/y0nashailug/webstore-backend).
+Simple web app created with Reactjs, Tailwind and Spring boot [Backend](https://github.com/y0nashailug/webstore-backend).
 
 ## Setup
 
