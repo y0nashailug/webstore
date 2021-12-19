@@ -5,12 +5,25 @@ import PropTypes from 'prop-types'
 import Icon from '../components/shared/Icon/Icon'
 import SellerList from '../components/lists/SellerList'
 import SellerItem from '../components/lists/SellerItem'
-import { getAllSellers, addFollow } from '../actions'
+import { getAllSellers, addFollow, getUser, approveSeller } from '../actions'
 import Button from '../components/shared/Button/Button'
+import { roles } from '../config'
 
-const SellerContainer = ({ sellers, loading, getAllSellers, addFollow }) => {
+const SellerContainer = ({
+    user,
+    sellers,
+    loading,
+    getAllSellers,
+    addFollow,
+    approveSeller,
+    getUser }) => {
 
     useEffect(() => getAllSellers(), [])
+    useEffect(() => { getUser() }, [])
+
+    const handleApproveSeller = async(id) => {
+        await approveSeller(id)
+    }
 
     return (
         <div className="flex flex-col items-center my-16 px-8">
@@ -31,8 +44,10 @@ const SellerContainer = ({ sellers, loading, getAllSellers, addFollow }) => {
                                 key={seller.id}
                                 className="px-4 py-2 flex items-center"
                             />
+                            {user && user.roles[0].toLowerCase() === roles[2] ? <Button icon={seller.enabled ? 'check': 'lock'} variant="empty" className="ml-auto" onClick={() =>
+                             handleApproveSeller(seller.id)}>{seller.enabled ? 'Approved': 'Approve'}</Button>:
                             <Button variant="empty" className="ml-auto" onClick={() =>
-                             addFollow({ sellerId: seller.id })}>Follow</Button>
+                             addFollow({ sellerId: seller.id })}>Follow</Button>}
                         </div>
                     ))}
                     </div>
@@ -56,7 +71,8 @@ SellerContainer.propTypes = {
 
 const mapStateToProps = (state) => ({
     sellers: state.sellers.sellers,
-    loading: state.sellers.loading
+    loading: state.sellers.loading,
+    user: state.user,
 })
 
-export default connect(mapStateToProps, { getAllSellers, addFollow })(SellerContainer)
+export default connect(mapStateToProps, { getAllSellers, addFollow, getUser, approveSeller })(SellerContainer)

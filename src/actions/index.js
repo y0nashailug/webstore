@@ -211,6 +211,13 @@ export const addFollow = (data) => async dispatch => {
 }
 
 
+export const approveSeller = (id) => async dispatch => {
+    await apiRequest.request({
+        ...APIS.sellers.approveSeller(id),
+        data: {}
+    })
+}
+
 export const unFollow = (data) => async dispatch => {
     await apiRequest.request({
         ...APIS.buyers.unFollow,

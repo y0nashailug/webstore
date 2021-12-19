@@ -35,6 +35,10 @@ export const APIS = {
       url: 'auth/seller/register',
       method: 'POST'
     },
+    approveSeller: (id) => ({
+      url: `user/regulate/approve/${id}`,
+      method: 'POST'
+    }),
   },
   admin: {
     get: {
